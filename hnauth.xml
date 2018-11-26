@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="authentication" order="0" folder="hnauth" method="upgrade">
+    <name>PLG_AUTHENTICATION_HNAUTH</name>
+    <creationDate>November 2018</creationDate>
+    <author>Helio Nogueira</author>
+    <authorEmail>helio.nogueir@gmail.com</authorEmail>
+    <authorUrl>https://github.com/helionogueir/</authorUrl>
+    <copyright>Copyright (c) 2018 Helio Nogueira</copyright>
+    <license>MIT</license>
+    <version>18.11.09</version>
+    <description>PLG_AUTHENTICATION_HNAUTH_DESCRIPTION</description>
+    <files>
+        <folder>src</folder>
+        <filename plugin="hnauth">hnauth.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB.plg_authentication_hnauth.sys.ini</language>
+        <language tag="pt-BR">language/pt-BR.plg_authentication_hnauth.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="publish_enable" class="btn-group btn-group-yesno" type="radio" default="0" label="PLG_AUTHENTICATION_HNAUTH_PUBLISH_ENABLE" description="PLG_AUTHENTICATION_HNAUTH_PUBLISH_ENABLE_DESCRIPTION">
+                    <option value="0">PLG_AUTHENTICATION_HNAUTH_DEFAULT_NO</option>
+                    <option value="1">PLG_AUTHENTICATION_HNAUTH_DEFAULT_YES</option>
+                </field>
+                <field name="publish_uri" type="text" label="PLG_AUTHENTICATION_HNAUTH_URI" description="PLG_AUTHENTICATION_HNAUTH_URI_DESCRIPTION" default="https://" />
+                <field name="publish_publickey" type="text" label="PLG_AUTHENTICATION_HNAUTH_PUBLICKEY" description="PLG_AUTHENTICATION_HNAUTH_PUBLICKEY_DESCRIPTION" />
+                <field name="publish_secretkey" type="text" label="PLG_AUTHENTICATION_HNAUTH_SECRETKEY" description="PLG_AUTHENTICATION_HNAUTH_SECRETKEY_DESCRIPTION" />
+                <field name="publish_params" type="textarea" label="PLG_AUTHENTICATION_HNAUTH_PARAMS" description="PLG_AUTHENTICATION_HNAUTH_PARAMS_DESCRIPTION" default='{"users": {"admin_style": "", "admin_language": "en-GB", "language": "en-GB", "editor": "tinymce", "helpsite": "", "timezone": "Europe/London"}}' />
+                <field type="spacer" name="spacer" hr="true"/>
+                <field name="unpublish_enable" class="btn-group btn-group-yesno" type="radio" default="0" label="PLG_AUTHENTICATION_HNAUTH_UNPUBLISH_ENABLE" description="PLG_AUTHENTICATION_HNAUTH_UNPUBLISH_ENABLE_DESCRIPTION">
+                    <option value="0">PLG_AUTHENTICATION_HNAUTH_DEFAULT_NO</option>
+                    <option value="1">PLG_AUTHENTICATION_HNAUTH_DEFAULT_YES</option>
+                </field>
+                <field name="unpublish_uri" type="text" label="PLG_AUTHENTICATION_HNAUTH_URI" description="PLG_AUTHENTICATION_HNAUTH_URI_DESCRIPTION" default="https://" />
+                <field name="unpublish_publickey" type="text" label="PLG_AUTHENTICATION_HNAUTH_PUBLICKEY" description="PLG_AUTHENTICATION_HNAUTH_PUBLICKEY_DESCRIPTION" />
+                <field name="unpublish_secretkey" type="text" label="PLG_AUTHENTICATION_HNAUTH_SECRETKEY" description="PLG_AUTHENTICATION_HNAUTH_SECRETKEY_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

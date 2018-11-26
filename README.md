@@ -1,2 +1,2 @@
-# joomla-plugin-authentication-hnauth
-Authentication User by API
+# Joomla Authentication
+JWT (JSON Web Token) Joomla Authentication

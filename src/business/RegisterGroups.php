@@ -15,21 +15,23 @@ class HnauthBusinessRegisterGroups implements HnauthBusiness
     {
         try {
             $groups = array();
-            if (!empty($data->groups) && !empty($data->users) && !empty($data->users->username)) {
-                if ($parentid = $this->getParentIdGroup()) {
-                    $groups[$parentid] = $parentid;
-                    foreach ($data->groups as $row) {
-                        if (!empty($row->title)) {
-                            if ($groupid = $this->getGroupIdByTtile($row->title)) {
-                                $groups[$groupid] = $groupid;
-                            } else {
-                                $this->model->save(array(
-                                    "id" => 0,
-                                    "title" => $row->title,
-                                    "parent_id" => $parentid
-                                ));
-                                if ($groupid = $this->getGroupIdByTtile($papel->ds_papel)) {
+            if (!empty($data->users) && !empty($data->users->username)) {
+                if (!empty($data->groups)) {
+                    if ($parentid = $this->getParentIdGroup()) {
+                        $groups[$parentid] = $parentid;
+                        foreach ($data->groups as $row) {
+                            if (!empty($row->title)) {
+                                if ($groupid = $this->getGroupIdByTtile($row->title)) {
                                     $groups[$groupid] = $groupid;
+                                } else {
+                                    $this->model->save(array(
+                                        "id" => 0,
+                                        "title" => $row->title,
+                                        "parent_id" => $parentid
+                                    ));
+                                    if ($groupid = $this->getGroupIdByTtile($papel->ds_papel)) {
+                                        $groups[$groupid] = $groupid;
+                                    }
                                 }
                             }
                         }

@@ -20,7 +20,8 @@ class HnauthBusinessPrepareToken implements HnauthBusiness
             }
             return $token;
         } catch (Exception $ex) {
-            throw $ex;
+            return null;
+            //throw $ex;
         }
     }
 

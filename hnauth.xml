@@ -28,7 +28,7 @@
                 <field name="publish_uri" type="text" label="PLG_AUTHENTICATION_HNAUTH_URI" description="PLG_AUTHENTICATION_HNAUTH_URI_DESCRIPTION" default="https://" />
                 <field name="publish_publickey" type="text" label="PLG_AUTHENTICATION_HNAUTH_PUBLICKEY" description="PLG_AUTHENTICATION_HNAUTH_PUBLICKEY_DESCRIPTION" />
                 <field name="publish_secretkey" type="text" label="PLG_AUTHENTICATION_HNAUTH_SECRETKEY" description="PLG_AUTHENTICATION_HNAUTH_SECRETKEY_DESCRIPTION" />
-                <field name="publish_params" type="textarea" label="PLG_AUTHENTICATION_HNAUTH_PARAMS" description="PLG_AUTHENTICATION_HNAUTH_PARAMS_DESCRIPTION" default='{"users": {"admin_style": "", "admin_language": "en-GB", "language": "en-GB", "editor": "tinymce", "helpsite": "", "timezone": "Europe/London"}}' />
+                <field name="publish_params" type="textarea" label="PLG_AUTHENTICATION_HNAUTH_PARAMS" description="PLG_AUTHENTICATION_HNAUTH_PARAMS_DESCRIPTION" default='{"users": {"admin_style": "", "admin_language": "pt-BR", "language": "pt-BR", "editor": "tinymce", "helpsite": "", "timezone": "America/Sao_Paulo"}}' />
                 <field type="spacer" name="spacer" hr="true"/>
                 <field name="unpublish_enable" class="btn-group btn-group-yesno" type="radio" default="0" label="PLG_AUTHENTICATION_HNAUTH_UNPUBLISH_ENABLE" description="PLG_AUTHENTICATION_HNAUTH_UNPUBLISH_ENABLE_DESCRIPTION">
                     <option value="0">PLG_AUTHENTICATION_HNAUTH_DEFAULT_NO</option>

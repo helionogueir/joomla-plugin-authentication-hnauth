@@ -22,6 +22,7 @@ class plgAuthenticationHnauth extends JPlugin
         JLoader::register('HnauthBusinessRegisterGroups', dirname(__FILE__) . "/src/business/RegisterGroups.php");
         JLoader::register('HnauthBusinessRegisterUser', dirname(__FILE__) . "/src/business/RegisterUser.php");
         JLoader::register('HnauthControllerPublishUser', dirname(__FILE__) . "/src/controller/PublishUser.php");
+        JLoader::register('HnauthControllerUnpublishUser', dirname(__FILE__) . "/src/controller/UnpublishUser.php");
     }
 
     public function onUserAuthenticate($credentials, $options, &$response)
@@ -31,7 +32,9 @@ class plgAuthenticationHnauth extends JPlugin
             $session->start();
             if (!empty($options['action']) && !empty($credentials['username']) && ('admin' != $credentials['username'])) {
                 if (preg_match('/(login\.site)/', $options['action'])) {
-                    (new HnauthControllerPublishUser($this))->publish($credentials['username']);
+                    if (!(new HnauthControllerPublishUser($this))->publish($credentials['username'])) {
+                        (new HnauthControllerUnpublishUser($this))->unpublish($credentials['username']);
+                    }
                 }
             }
             $session->destroy();

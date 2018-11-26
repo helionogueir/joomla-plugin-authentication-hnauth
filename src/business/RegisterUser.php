@@ -7,7 +7,7 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
         return $this;
     }
 
-    public function register($data, $params)
+    public function register($data, $params = '')
     {
         try {
             $isSave = false;

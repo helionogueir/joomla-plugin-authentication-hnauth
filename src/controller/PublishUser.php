@@ -18,9 +18,7 @@ class HnauthControllerPublishUser implements HnauthController
                 $uri = (new HnauthBusinessPrepareUri())->prepare($this->plugin->params->get('publish_uri', ''), array("cpf" => $username));
                 $token = (new HnauthBusinessPrepareToken())->prepare($this->plugin->params->get('publish_publickey', ''), $this->plugin->params->get('publish_secretkey', ''));
                 if ($data = (new HnauthBusinessRequest())->get($token, $uri)) {
-                    if ((new HnauthBusinessRegisterUser())->register($data, $this->plugin->params->get('publish_params', ''))) {
-                        $published = true;
-                    }
+                    $published = (new HnauthBusinessRegisterUser())->register($data, $this->plugin->params->get('publish_params', ''));
                 }
             }
             return $published;

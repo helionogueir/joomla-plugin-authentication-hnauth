@@ -5,7 +5,7 @@ class HnauthControllerUnpublishUser implements HnauthController
 
     private $plugin = null;
 
-    public function __construct($plugin)
+    public function __construct(JPlugin $plugin)
     {
         $this->plugin = $plugin;
     }

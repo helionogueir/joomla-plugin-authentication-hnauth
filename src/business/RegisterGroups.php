@@ -80,7 +80,7 @@ class HnauthBusinessRegisterGroups implements HnauthBusiness
                 $query = $db->getQuery(true)
                     ->select('id')
                     ->from($db->quoteName($this->model->getTable()->getTableName()))
-                    ->where("title = '{$title}'");
+                    ->where("title = {$db->quote($title)}");
                 if ($row = $db->setQuery($query)->loadObject()) {
                     $id = $row->id;
                 }

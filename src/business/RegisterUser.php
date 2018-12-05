@@ -67,7 +67,7 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
                 }
             }
         }
-        return json_encode($data);
+        return $data;
     }
 
     private function prepareName(&$row)

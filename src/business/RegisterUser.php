@@ -67,6 +67,10 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
                 }
             }
         }
+        json_encode($data);
+        if (JSON_ERROR_NONE != json_last_error()) {
+            $data = array();
+        }
         return $data;
     }
 

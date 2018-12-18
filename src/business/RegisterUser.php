@@ -49,7 +49,7 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
         }
     }
 
-    private function prepareParams(&$params)
+    private function prepareParams($params)
     {
         $data = array(
             "admin_style" => "",
@@ -59,17 +59,12 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
             "helpsite" => "",
             "timezone" => ""
         );
-        $metadata = json_decode($params);
-        if (JSON_ERROR_NONE == json_last_error() && !empty($metadata->users)) {
-            foreach ($data as $key => $value) {
+        if ($metadata = $this->parseParams($params)) {
+            foreach (array_keys($data) as $key) {
                 if (!empty($metadata->users->{$key})) {
-                    $data[$key] = $metadata->users->{$key};
+                    $data[$key] = "{$metadata->users->{$key}}";
                 }
             }
-        }
-        json_encode($data);
-        if (JSON_ERROR_NONE != json_last_error()) {
-            $data = array();
         }
         return $data;
     }
@@ -92,6 +87,18 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
         }
     }
 
+    private function parseParams($params)
+    {
+        $data = array();
+        if (!empty($params) && !is_array($params)) {
+            $metadata = json_decode($params);
+            if (JSON_ERROR_NONE == json_last_error()) {
+                $data = (array)$metadata;
+            }
+        }
+        return $data;
+    }
+
     private function matchValues(array &$row, array &$values, array $ignore = array())
     {
         $ignore = array_merge($ignore, array(
@@ -103,7 +110,11 @@ class HnauthBusinessRegisterUser implements HnauthBusiness
         ));
         foreach ($row as $key => $value) {
             if (!in_array($key, $ignore) && isset($values[$key])) {
-                $row[$key] = $values[$key];
+                if ('params' == $key) {
+                    $row[$key] = $this->parseParams($values[$key]);
+                } else {
+                    $row[$key] = $values[$key];
+                }
             }
         }
     }
